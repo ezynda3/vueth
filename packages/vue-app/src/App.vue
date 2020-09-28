@@ -18,9 +18,19 @@ const PROVIDER = process.env.VUE_APP_PROVIDER
   },
 })
 export default class App extends Vue {
+  monitorBalance: NodeJS.Timeout = {} as NodeJS.Timeout
+
   async mounted() {
     const provider = new JsonRpcProvider(PROVIDER || 'http://localhost:8545')
-    await this.$store.dispatch('eth/setUserAddress', provider)
+    await this.$store.dispatch('Eth/setUserAddress', provider)
+    const address = this.$store.state.Eth.userAddress
+    this.monitorBalance = setInterval(() => {
+      this.$store.dispatch('Eth/setUserBalance', provider, address)
+    }, 3000)
+  }
+
+  beforeDestroy() {
+    clearInterval(this.monitorBalance)
   }
 }
 </script>

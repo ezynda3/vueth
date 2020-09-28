@@ -3,7 +3,7 @@
     <Address />
     <Balance class="ml-2" />
     <Wallet class="ml-2" />
-    <button class="ml-2 bg-blue-600 p-2 text-white font-bold rounded-lg">
+    <button class="ml-5 bg-blue-600 p-2 text-white font-bold rounded-full w-32">
       Connect
     </button>
   </div>

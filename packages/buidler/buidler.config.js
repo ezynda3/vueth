@@ -7,7 +7,7 @@ usePlugin("@nomiclabs/buidler-waffle");
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 
 /*
-      📡 This is where you configure your deploy configuration for 🏗 scaffold-eth
+      📡 This is where you configure your deploy configuration for 🏗 vueth
 
       check out `packages/scripts/deploy.js` to customize your deployment
 
@@ -35,7 +35,7 @@ module.exports = {
   defaultNetwork,
 
   // don't forget to set your provider like:
-  // REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env
+  // REACT_APP_PROVIDER=https://dai.poa.network in packages/vue-app/.env
   // (then your frontend will talk to your contracts on the live network!)
   // (you will need to restart the `yarn run start` dev server after editing the .env)
 

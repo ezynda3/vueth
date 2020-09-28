@@ -2,7 +2,7 @@ const fs = require("fs");
 const chalk = require("chalk");
 const bre = require("@nomiclabs/buidler");
 
-const publishDir = "../react-app/src/contracts";
+const publishDir = "../vue-app/src/contracts";
 
 function publishContract(contractName) {
   console.log(

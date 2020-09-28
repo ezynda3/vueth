@@ -44,7 +44,7 @@ yarn deploy
 
 🔏 Edit your smart contract `YourContract.sol` in `packages/buidler/contracts`
 
-📝 Edit your frontend `App.jsx` in `packages/react-app/src`
+📝 Edit your frontend `App.jsx` in `packages/vue-app/src`
 
 📱 Open http://localhost:3000 to see the app
 
@@ -132,7 +132,7 @@ Look for the [Buidler](https://buidler.dev) console.log() output in the `yarn ru
 
 📟 Events are really handy for signaling to the frontend. [Read more about events here.](https://solidity-by-example.org/0.6/events/)
 
-📲 Spend some time in `App.jsx` in `packages/react-app/src` and learn about the 🛰 [Providers](https://github.com/austintgriffith/scaffold-eth#-web3-providers)
+📲 Spend some time in `App.jsx` in `packages/vue-app/src` and learn about the 🛰 [Providers](https://github.com/austintgriffith/scaffold-eth#-web3-providers)
 
 🐜 The UI framework `Ant Design` has a [bunch of great components](https://ant.design/components/overview/).
 
@@ -322,7 +322,7 @@ yarn install
 yarn start
 ```
 
-📝 Edit your frontend `App.jsx` in `packages/react-app/src` and open http://localhost:3000
+📝 Edit your frontend `App.jsx` in `packages/vue-app/src` and open http://localhost:3000
 
 ---
 
@@ -434,7 +434,7 @@ yarn run deploy
 
 🔏 Edit or rename your smart contract `YourContract.sol` in `packages/buidler/contracts`
 
-📝 Edit your frontend `App.jsx` in `packages/react-app/src`
+📝 Edit your frontend `App.jsx` in `packages/vue-app/src`
 
 📱 Open http://localhost:3000 to see the app
 
@@ -488,13 +488,13 @@ tx({
 tx(writeContracts["SmartContractWallet"].updateOwner(newOwner));
 ```
 
-> ☢️ **Warning**: You will need to update the configuration for `react-app/src/helpers/Transactor.js` to use _your_ [BlockNative dappId](https://www.blocknative.com/notify)
+> ☢️ **Warning**: You will need to update the configuration for `vue-app/src/helpers/Transactor.js` to use _your_ [BlockNative dappId](https://www.blocknative.com/notify)
 
 ---
 
 ## 🖇 Hooks:
 
-Commonly used Ethereum hooks located in `packages/react-app/src/`:
+Commonly used Ethereum hooks located in `packages/vue-app/src/`:
 
 `usePoller(fn, delay)`: runs a function on app load and then on a custom interval
 
@@ -572,7 +572,7 @@ const ownerUpdates = useEventListener(
 
 ## 📦 Components:
 
-Your commonly used React Ethereum components located in `packages/react-app/src/`:
+Your commonly used React Ethereum components located in `packages/vue-app/src/`:
 
 <br/>
 
@@ -669,7 +669,7 @@ const price = useExchangePrice(mainnetProvider);
 
 📝 Edit your smart contract `SmartContractWallet.sol` in `packages/buidler/contracts`
 
-📝 Then edit the `SmartContractWallet.js` React component in `packages/react-app/src`
+📝 Then edit the `SmartContractWallet.js` React component in `packages/vue-app/src`
 
 ▶️ Run `yarn run compile` and `yarn run deploy` or just `yarn run watch`
 

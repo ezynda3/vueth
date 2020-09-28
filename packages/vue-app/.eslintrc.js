@@ -16,7 +16,8 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'semi': ['error', 'never'],
     'max-len': 'off',
-    'indent': 2
+    'indent': 2,
+    'class-methods-use-this': 'off'
   },
   overrides: [
     {
@@ -27,6 +28,6 @@ module.exports = {
       env: {
         mocha: true,
       },
-    },
+    }
   ],
 };

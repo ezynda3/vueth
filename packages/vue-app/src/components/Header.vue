@@ -22,14 +22,29 @@
           </button>
         </div>
       </div>
-      <div class="flex flex-col md:flex-row hidden md:block -mx-2">
+      <!-- <div class="flex flex-col md:flex-row hidden md:block -mx-2">
         <router-link
           to='/'
           class="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2"
         >
           Home
         </router-link>
+      </div> -->
+      <div>
+        <Account />
       </div>
     </div>
   </nav>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import Account from '@/components/Account.vue'
+
+@Component({
+  components: {
+    Account,
+  },
+})
+export default class Header extends Vue {}
+</script>

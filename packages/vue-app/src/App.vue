@@ -7,7 +7,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { JsonRpcProvider } from '@ethersproject/providers'
 import Header from '@/components/Header.vue'
+
+const PROVIDER = process.env.VUE_APP_PROVIDER
 
 @Component({
   components: {
@@ -15,8 +18,9 @@ import Header from '@/components/Header.vue'
   },
 })
 export default class App extends Vue {
-  mounted() {
-    console.log(process.env.VUE_APP_FOO)
+  async mounted() {
+    const provider = new JsonRpcProvider(PROVIDER || 'http://localhost:8545')
+    await this.$store.dispatch('eth/setUserAddress', provider)
   }
 }
 </script>

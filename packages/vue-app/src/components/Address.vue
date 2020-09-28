@@ -22,13 +22,13 @@ export default class Address extends Vue {
   copying = false
 
   get blockieSrc(): string {
-    const address = '0x8B7B2b4F7A391b6f14A81221AE0920a9735B67Fc' // TODO use prop
+    const address = this.$store.state.eth.userAddress
     return blockies.create({ seed: address }).toDataURL()
   }
 
   copy() {
     this.copying = true
-    setTimeout(() => { this.copying = false }, 2000)
+    setTimeout(() => { this.copying = false }, 1000)
   }
 }
 </script>

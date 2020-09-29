@@ -3,7 +3,7 @@
     <Address />
     <Balance class="ml-2" />
     <Wallet class="ml-2" />
-    <button class="ml-5 bg-blue-600 p-2 text-white font-bold rounded-full w-32">
+    <button @click="clickedConnect" class="ml-5 bg-blue-600 p-2 text-white font-bold rounded-full w-32">
       Connect
     </button>
   </div>
@@ -21,6 +21,11 @@ import Wallet from './Wallet.vue'
     Address,
     Balance,
     Wallet,
+  },
+  methods: {
+    clickedConnect() {
+      this.$emit('clicked', 'connect')
+    },
   },
 })
 export default class Account extends Vue {

@@ -35,7 +35,9 @@
         </router-link>
       </div> -->
       <div>
-        <Account />
+        <Account
+        @clicked="onAccountButtonClicked"
+         />
       </div>
     </div>
   </nav>
@@ -48,6 +50,11 @@ import Account from '@/components/Account.vue'
 @Component({
   components: {
     Account,
+  },
+  methods: {
+    onAccountButtonClicked(evt) {
+      console.log('clicked', evt)
+    },
   },
 })
 export default class Header extends Vue {}

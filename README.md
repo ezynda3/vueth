@@ -6,8 +6,8 @@
 
 ## quickstart
 
-```bash 
-git clone https://github.com/austintgriffith/scaffold-eth.git your-next-dapp
+```bash
+git clone https://github.com/ezynda3/vueth.git your-next-dapp
 
 cd your-next-dapp
 ```
@@ -21,7 +21,7 @@ yarn install
 > you might get node-gyp errors, ignore them and run:
 
 ```bash
-
+M
 yarn start
 
 ```
@@ -54,7 +54,7 @@ yarn deploy
 
 ![image](https://user-images.githubusercontent.com/2653167/91858466-768bb080-ec26-11ea-9e9b-81519f7f1c90.png)
 
-> React dev server, Buidler blockchain, deploy terminal, code IDE, and frontend browser. 
+> React dev server, Buidler blockchain, deploy terminal, code IDE, and frontend browser.
 
 ---
 
@@ -108,7 +108,7 @@ Look for the [Buidler](https://buidler.dev) console.log() output in the `yarn ru
 
 🚽 UNDERFLOW!
 
-🧫 You can iterate and learn as you go. Test your assumptions! 
+🧫 You can iterate and learn as you go. Test your assumptions!
 
 ---
 
@@ -142,7 +142,7 @@ Look for the [Buidler](https://buidler.dev) console.log() output in the `yarn ru
 
 🔲 Try making a `<Button/>` that calls `writeContracts.YourContract.setPurpose("👋 Hello World")` to explore how your UI might work
 
-🧬 Next learn about [structs](https://solidity-by-example.org/0.6/structs/) in Solidity. 
+🧬 Next learn about [structs](https://solidity-by-example.org/0.6/structs/) in Solidity.
 
 🗳 Maybe an make an array `YourStructName[] public proposals;` that could call be voted on with `function vote() public {}`
 

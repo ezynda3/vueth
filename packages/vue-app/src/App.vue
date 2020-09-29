@@ -2,6 +2,7 @@
   <div id="app">
     <Header
     @clicked="onHeaderClicked"
+    v-bind:web3Modal="w3Modal"
     />
     <router-view/>
   </div>
@@ -9,7 +10,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { JsonRpcProvider } from '@ethersproject/providers'
+import { JsonRpcProvider, Web3Provider } from '@ethersproject/providers'
 import Header from '@/components/Header.vue'
 import Web3Modal from 'web3modal'
 import WalletConnectProvider from '@walletconnect/web3-provider'
@@ -40,7 +41,16 @@ const logoutOfWeb3Modal = async () => {
   }, 1)
 }
 
+const setInjectedProvider = (provider) => {
+  console.log('set injected state', web3Modal.cachedProvider)
+}
+
 @Component({
+  data() {
+    return {
+      w3Modal: web3Modal,
+    }
+  },
   components: {
     Header,
   },
@@ -50,9 +60,13 @@ const logoutOfWeb3Modal = async () => {
       if (evt === 'connect') {
         this.loadWeb3Modal()
       }
+      if (evt === 'disconnect') {
+        logoutOfWeb3Modal()
+      }
     },
     async loadWeb3Modal() {
       const provider = await web3Modal.connect()
+      setInjectedProvider(new Web3Provider(provider))
     },
   },
 })

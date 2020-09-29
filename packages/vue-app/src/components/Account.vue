@@ -3,8 +3,11 @@
     <Address />
     <Balance class="ml-2" />
     <Wallet class="ml-2" />
-    <button @click="clickedConnect" class="ml-5 bg-blue-600 p-2 text-white font-bold rounded-full w-32">
+    <button v-if="!web3Modal.cachedProvider" @click="clickedConnect" class="ml-5 bg-blue-600 p-2 text-white font-bold rounded-full w-32">
       Connect
+    </button>
+    <button v-if="web3Modal.cachedProvider" @click="clickedDisconnect" class="ml-5 bg-blue-600 p-2 text-white font-bold rounded-full w-32">
+      Logout
     </button>
   </div>
 </template>
@@ -22,9 +25,13 @@ import Wallet from './Wallet.vue'
     Balance,
     Wallet,
   },
+  props: ['web3Modal'],
   methods: {
     clickedConnect() {
       this.$emit('clicked', 'connect')
+    },
+    clickedDisconnect() {
+      this.$emit('clicked', 'disconnect')
     },
   },
 })

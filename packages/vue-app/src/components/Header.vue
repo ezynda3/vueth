@@ -37,6 +37,7 @@
       <div>
         <Account
         @clicked="onAccountButtonClicked"
+        v-bind:web3Modal="web3Modal"
          />
       </div>
     </div>
@@ -51,9 +52,10 @@ import Account from '@/components/Account.vue'
   components: {
     Account,
   },
+  props: ['web3Modal'],
   methods: {
     onAccountButtonClicked(evt) {
-      this.$emit('clicked', 'connect')
+      this.$emit('clicked', evt)
     },
   },
 })

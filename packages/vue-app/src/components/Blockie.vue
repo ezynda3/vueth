@@ -10,7 +10,7 @@ import * as blockies from 'blockies-ts'
 
 @Component
 export default class Blockie extends Vue {
-  @Prop({ default: '' }) readonly address: string
+  @Prop({ required: true }) readonly address: string | undefined
 
   copying = false
 

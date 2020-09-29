@@ -31,7 +31,7 @@ import Blockie from './Blockie.vue'
   },
 })
 export default class Address extends Vue {
-  @Prop({ default: '' }) readonly address: string
+  @Prop({ required: true }) readonly address: string | undefined
 
   copying = false
 

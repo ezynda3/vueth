@@ -53,7 +53,7 @@ import Account from '@/components/Account.vue'
   },
   methods: {
     onAccountButtonClicked(evt) {
-      console.log('clicked', evt)
+      this.$emit('clicked', 'connect')
     },
   },
 })

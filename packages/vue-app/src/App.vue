@@ -34,15 +34,20 @@ const web3Modal = new Web3Modal({
   },
 })
 
+const setInjectedProvider = (provider: any) => {
+  console.log('set injected state', web3Modal.cachedProvider)
+}
+
+const loadWeb3Modal = async () => {
+  const provider = await web3Modal.connect()
+  setInjectedProvider(new Web3Provider(provider))
+}
+
 const logoutOfWeb3Modal = async () => {
   await web3Modal.clearCachedProvider()
   setTimeout(() => {
     window.location.reload()
   }, 1)
-}
-
-const setInjectedProvider = (provider) => {
-  console.log('set injected state', web3Modal.cachedProvider)
 }
 
 @Component({
@@ -58,15 +63,11 @@ const setInjectedProvider = (provider) => {
     onHeaderClicked(evt) {
       console.log('clicked', evt)
       if (evt === 'connect') {
-        this.loadWeb3Modal()
+        loadWeb3Modal()
       }
       if (evt === 'disconnect') {
         logoutOfWeb3Modal()
       }
-    },
-    async loadWeb3Modal() {
-      const provider = await web3Modal.connect()
-      setInjectedProvider(new Web3Provider(provider))
     },
   },
 })

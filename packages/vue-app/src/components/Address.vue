@@ -37,6 +37,12 @@ export default class Address extends Vue {
 
   async copy() {
     this.copying = true
+    const elem = document.createElement('textarea')
+    elem.value = this.address || ''
+    document.body.appendChild(elem)
+    elem.select()
+    document.execCommand('copy')
+    document.body.removeChild(elem)
     setTimeout(() => { this.copying = false }, 1000)
   }
 }

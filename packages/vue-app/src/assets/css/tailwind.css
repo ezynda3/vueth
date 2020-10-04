@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-disabled {
+    @apply opacity-50;
+    @apply cursor-not-allowed;
+}

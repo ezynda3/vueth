@@ -28,7 +28,7 @@
       </div>
       <div v-else class="mt-5">
         <AddressInput v-model="toAddress"/>
-        <EtherInput/>
+        <EtherInput v-model="amount"/>
       </div>
       <template v-slot:footer>
         <div>
@@ -37,7 +37,7 @@
               <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
               {{ showQR ? 'Hide' : 'Receive' }}
             </t-button>
-            <t-button type="button" variant="simple" :disabled="!validAddress">
+            <t-button type="button" variant="simple" :disabled="!validAddress" :class="{'btn-disabled': !validAddress || !amount }">
               <svg class="w-6 h-6 mr-1 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
               Send
             </t-button>
@@ -70,6 +70,8 @@ export default class Wallet extends Vue {
   @Prop({ required: true }) readonly address: string | undefined
 
   toAddress = ''
+
+  amount = null
 
   showModal = false
 

@@ -10,6 +10,7 @@
     "ipfs": "node ./scripts/ipfs.js"
   },
   "dependencies": {
+    "@ethersproject/address": "^5.0.5",
     "@ethersproject/providers": "^5.0.9",
     "blockies-ts": "^1.0.0",
     "chalk": "^4.1.0",

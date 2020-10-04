@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <img :src="blockieSrc" class="w-10 h-10"/>
+    <img :src="blockieSrc" :class="`w-${size} h-${size}`"/>
   </div>
 </template>
 
@@ -11,6 +11,8 @@ import * as blockies from 'blockies-ts'
 @Component
 export default class Blockie extends Vue {
   @Prop({ required: true }) readonly address: string | undefined
+
+  @Prop({ default: '10' }) readonly size: string | undefined
 
   copying = false
 

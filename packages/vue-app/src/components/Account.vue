@@ -2,7 +2,7 @@
   <div class="flex">
     <Address :address="$store.state.Eth.userAddress"/>
     <Balance class="ml-2" />
-    <Wallet class="ml-2" />
+    <Wallet class="ml-2" :address="$store.state.Eth.userAddress"/>
     <button class="ml-5 bg-blue-600 p-2 text-white font-bold rounded-full w-32">
       Connect
     </button>

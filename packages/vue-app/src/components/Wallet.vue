@@ -16,28 +16,58 @@
     </svg>
     <t-modal
       v-model="showModal"
-      header="Title of the modal"
     >
-      TODO: Create Wallet UI
-    <template v-slot:footer>
-      <div class="flex justify-between">
-        <t-button type="button">
-          Cancel
-        </t-button>
-        <t-button type="button">
-          Ok
-        </t-button>
+      <template :v-slot="header">
+        <div class="flex justify-between">
+          <Address :address="address"/>
+          <Balance class="mr-5"/>
+        </div>
+      </template>
+      <div class="mt-5">
+        <AddressInput v-model="toAddress"/>
+        <EtherInput/>
       </div>
+      <template v-slot:footer>
+        <div class="flex justify-end">
+          <t-button type="button" class="mr-1" variant="simple">
+            <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+            Receive
+          </t-button>
+          <t-button type="button" variant="simple" :disabled="!validAddress">
+            <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+            Send
+          </t-button>
+        </div>
     </template>
   </t-modal>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
+import { isAddress } from '@ethersproject/address'
+import Balance from './Balance.vue'
+import Address from './Address.vue'
+import AddressInput from './AddressInput.vue'
+import EtherInput from './EtherInput.vue'
 
-@Component
+@Component({
+  components: {
+    Address,
+    AddressInput,
+    Balance,
+    EtherInput,
+  },
+})
 export default class Wallet extends Vue {
+  @Prop({ required: true }) readonly address: string | undefined
+
+  toAddress = ''
+
   showModal = false
+
+  get validAddress() {
+    return isAddress(this.toAddress)
+  }
 }
 </script>

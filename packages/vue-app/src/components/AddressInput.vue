@@ -21,7 +21,7 @@ import Blockie from './Blockie.vue'
   },
 })
 export default class AddressInput extends Vue {
-    @Prop({ default: '' }) value: string | undefined
+    @Prop({ default: null }) value: string | undefined
 
     get validAddress() {
       return isAddress(this.value as string)

@@ -25,6 +25,7 @@
       </template>
       <div v-if="showQR" class="m-5">
         <qrcode-vue :value="address" level="H" render-as="svg" size="450" />
+        <Address :address="address" size="long" :small="true" class="mt-3" />
       </div>
       <div v-else class="mt-5">
         <AddressInput v-model="toAddress"/>

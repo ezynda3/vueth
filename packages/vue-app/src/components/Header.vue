@@ -35,7 +35,10 @@
         </router-link>
       </div> -->
       <div>
-        <Account />
+        <Account
+        @clicked="onAccountButtonClicked"
+        v-bind:web3Modal="web3Modal"
+         />
       </div>
     </div>
   </nav>
@@ -48,6 +51,12 @@ import Account from '@/components/Account.vue'
 @Component({
   components: {
     Account,
+  },
+  props: ['web3Modal'],
+  methods: {
+    onAccountButtonClicked(evt) {
+      this.$emit('clicked', evt)
+    },
   },
 })
 export default class Header extends Vue {}

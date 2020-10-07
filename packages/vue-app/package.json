@@ -24,7 +24,9 @@
     "vue-router": "^3.2.0",
     "vue-tailwind": "^1.2.8",
     "vuex": "^3.4.0",
-    "vuex-module-decorators": "^1.0.1"
+    "vuex-module-decorators": "^1.0.1",
+    "@walletconnect/web3-provider": "^1.0.0-beta.47",
+    "web3modal": "^1.5.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",

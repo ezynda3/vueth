@@ -1,8 +1,8 @@
 <template>
   <div class="flex">
-    <img :src="blockieSrc" class="w-10 h-10"/>
+    <Blockie :address="address" />
     <span class="ml-2 text-2xl font-bold">
-      {{ '0x8B7B2b4F7A391b6f14A81221AE0920a9735B67Fc'.substr(0,7) }}
+      {{ address.substr(0,7) }}
     </span>
     <svg
       @click="copy"
@@ -22,20 +22,27 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import * as blockies from 'blockies-ts'
+import { Component, Vue, Prop } from 'vue-property-decorator'
+import Blockie from './Blockie.vue'
 
-@Component
+@Component({
+  components: {
+    Blockie,
+  },
+})
 export default class Address extends Vue {
-  copying = false
+  @Prop({ required: true }) readonly address: string | undefined
 
-  get blockieSrc(): string {
-    const address = this.$store.state.Eth.userAddress
-    return blockies.create({ seed: address }).toDataURL()
-  }
+  copying = false
 
   async copy() {
     this.copying = true
+    const elem = document.createElement('textarea')
+    elem.value = this.address || ''
+    document.body.appendChild(elem)
+    elem.select()
+    document.execCommand('copy')
+    document.body.removeChild(elem)
     setTimeout(() => { this.copying = false }, 1000)
   }
 }

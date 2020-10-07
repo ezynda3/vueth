@@ -1,9 +1,9 @@
 <template>
   <div class="flex">
-    <Address />
+    <Address :address="$store.state.Eth.userAddress"/>
     <Balance class="ml-2" />
-    <Wallet class="ml-2" />
-    <button v-if="!web3Modal.cachedProvider" @click="clickedConnect" class="ml-5 bg-blue-600 p-2 text-white font-bold rounded-full w-32">
+    <Wallet class="ml-2" :address="$store.state.Eth.userAddress"/>
+    <button v-if="!web3Modal.cachedProvider" @click="clickedConnect" class="ml-5 bg-blue-600 p-2 text-white font-bold rounded-full w-32 focus:outline-none">
       Connect
     </button>
     <button v-if="web3Modal.cachedProvider" @click="clickedDisconnect" class="ml-5 bg-blue-600 p-2 text-white font-bold rounded-full w-32">
@@ -14,7 +14,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import * as blockies from 'blockies-ts'
 import Address from './Address.vue'
 import Balance from './Balance.vue'
 import Wallet from './Wallet.vue'
@@ -35,10 +34,5 @@ import Wallet from './Wallet.vue'
     },
   },
 })
-export default class Account extends Vue {
-  get blockieSrc(): string {
-    const address = '0x8B7B2b4F7A391b6f14A81221AE0920a9735B67Fc' // TODO use prop
-    return blockies.create({ seed: address }).toDataURL()
-  }
-}
+export default class Account extends Vue {}
 </script>

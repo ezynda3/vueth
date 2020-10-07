@@ -14,10 +14,10 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'semi': ['error', 'never'],
+    semi: ['error', 'never'],
     'max-len': 'off',
-    'indent': 2,
-    'class-methods-use-this': 'off'
+    indent: 2,
+    'class-methods-use-this': 'off',
   },
   overrides: [
     {
@@ -28,6 +28,6 @@ module.exports = {
       env: {
         mocha: true,
       },
-    }
+    },
   ],
-};
+}

@@ -34,7 +34,7 @@ const web3Modal = new Web3Modal({
   },
 })
 
-const setInjectedProvider = (provider: any) => {
+const setInjectedProvider = (provider: Web3Provider) => {
   console.log('set injected state', web3Modal.cachedProvider)
 }
 
@@ -51,28 +51,14 @@ const logoutOfWeb3Modal = async () => {
 }
 
 @Component({
-  data() {
-    return {
-      w3Modal: web3Modal,
-    }
-  },
   components: {
     Header,
-  },
-  methods: {
-    onHeaderClicked(evt) {
-      console.log('clicked', evt)
-      if (evt === 'connect') {
-        loadWeb3Modal()
-      }
-      if (evt === 'disconnect') {
-        logoutOfWeb3Modal()
-      }
-    },
   },
 })
 export default class App extends Vue {
   monitorBalance: NodeJS.Timeout = {} as NodeJS.Timeout
+
+  w3Modal: Web3Modal = web3Modal
 
   async mounted() {
     const provider = new JsonRpcProvider(PROVIDER || 'http://localhost:8545')
@@ -81,6 +67,16 @@ export default class App extends Vue {
     this.monitorBalance = setInterval(() => {
       this.$store.dispatch('Eth/setUserBalance', provider, address)
     }, 3000)
+  }
+
+  onHeaderClicked(evt: string) {
+    console.log('clicked', evt)
+    if (evt === 'connect') {
+      loadWeb3Modal()
+    }
+    if (evt === 'disconnect') {
+      logoutOfWeb3Modal()
+    }
   }
 
   beforeDestroy() {
